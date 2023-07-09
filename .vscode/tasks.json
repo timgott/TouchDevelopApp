@@ -1,19 +1,19 @@
 {
-	"version": "0.1.0",
+	"version": "2.0.0",
 	// Task runner is jake
 	"command": "jake",
-	// Need to be executed in shell / cmd
-	"isShellCommand": true,
 	"tasks": [
 		{
-			// TS build command is local.
-			"taskName": "build",
-			// Make this the default build command.
-			"isBuildCommand": true,
-			// Use the redefined Typescript output problem matcher.
+			"label": "build",
+			"type": "jake",
+			"task": "build",
 			"problemMatcher": [
 				"$tsc"
-			]
+			],
+			"group": {
+				"_id": "build",
+				"isDefault": false
+			}
 		}
 	]
 }
