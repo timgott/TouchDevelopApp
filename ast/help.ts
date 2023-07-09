@@ -1848,8 +1848,6 @@ module TDev {
                 HelpTopic._initalized = true;
                 var bestForTag:StringMap<HelpTopic> = {}
 
-                HelpTopic._topics = [];                
-
                 api.getKinds().forEach((k:Kind) => {
                     if (k.isPrivate || k instanceof ThingSetKind || (k.isData && k.getContexts() == KindContext.None)) return;
                     var tagName = Util.toHashTag(k.getName());
@@ -1964,6 +1962,17 @@ module TDev {
             }
 
             return HelpTopic._topics;
+        }
+
+        static loadHelp(scripts:any, topicsJson:HelpTopicJson[], templates:any[])
+        {
+            //HelpTopic.shippedScripts = scripts;
+            var sc = (<any>TDev).ScriptCache;
+            if (sc) sc.shippedHelpScripts = scripts;
+            //HelpTopic.scriptTemplates = templates;
+            topicsJson.forEach((d) => {
+                HelpTopic._topics.push(new HelpTopic(d))
+            })
         }
 
         public renderLink(mdcmt:MdComments, withKind = false)
