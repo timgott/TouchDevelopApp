@@ -178,29 +178,30 @@ module TDev
         }
         SizeMgr.applySizes();
 
-        var appCache = window.applicationCache;
-
-        function markUpdate()
-        {
-            tick(Ticks.appUpdateAvailable);
-            Browser.Host.updateIsWaiting = true;
-        }
-
-        (<any>window).tdevMarkRefresh = markUpdate;
-        if (appCache.status == appCache.UPDATEREADY) {
-            markUpdate();
-            tick(Ticks.appQuickUpdate)
-            Browser.Host.tryUpdate();
-            return;
-        }
-
-        appCache.addEventListener('updateready', () => {
-            if (appCache.status == appCache.UPDATEREADY) {
-                markUpdate();
-            } else {
-                tick(Ticks.appNoUpdate);
-            }
-        }, false);
+        // TODO: Find out whether window.applicationCache code was important, and if so, port to non-deprecated API
+        //var appCache = window.applicationCache;
+//
+        //function markUpdate()
+        //{
+        //    tick(Ticks.appUpdateAvailable);
+        //    Browser.Host.updateIsWaiting = true;
+        //}
+//
+        //(<any>window).tdevMarkRefresh = markUpdate;
+        //if (appCache.status == appCache.UPDATEREADY) {
+        //    markUpdate();
+        //    tick(Ticks.appQuickUpdate)
+        //    Browser.Host.tryUpdate();
+        //    return;
+        //}
+//
+        //appCache.addEventListener('updateready', () => {
+        //    if (appCache.status == appCache.UPDATEREADY) {
+        //        markUpdate();
+        //    } else {
+        //        tick(Ticks.appNoUpdate);
+        //    }
+        //}, false);
 
         onlyOneTab();
     }
@@ -302,12 +303,12 @@ module TDev
 
         AST.Lexer.init();
 
-        var appCache = window.applicationCache;
-        function logAppCacheEvent(ev:Event) {
-            Ticker.dbg("app cache event: {0}, status={1}", ev.type, appCache.status);
-        }
-        [ 'cached', 'checking', 'downloading', 'error', 'noupdate', 'obsolete', 'progress', 'updateready'
-          ].forEach((ev) => appCache.addEventListener(ev, logAppCacheEvent, false));
+        //var appCache = window.applicationCache;
+        //function logAppCacheEvent(ev:Event) {
+        //    Ticker.dbg("app cache event: {0}, status={1}", ev.type, appCache.status);
+        //}
+        //[ 'cached', 'checking', 'downloading', 'error', 'noupdate', 'obsolete', 'progress', 'updateready'
+        //  ].forEach((ev) => appCache.addEventListener(ev, logAppCacheEvent, false));
 
         Cloud._migrate = Login.migrate;
 
@@ -469,11 +470,11 @@ module TDev
 
             //if (!Cloud.isOnline()) return;
 
-            try {
-                window.applicationCache.update();
-            } catch (e) {
-            }
-            updateLoop(id, "updating the web app");
+            //try {
+            //    window.applicationCache.update();
+            //} catch (e) {
+            //}
+            //updateLoop(id, "updating the web app");
 
             return true;
         }

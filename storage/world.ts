@@ -459,12 +459,13 @@ module TDev {
                 if (!v) TDev.RT.Perf.stop(last);
                 last = TDev.RT.Perf.start(name);
             }
-            if (syncCount > 0 && window.applicationCache.status == window.applicationCache.IDLE) {
-                try {
-                    window.applicationCache.update();
-                } catch (e) {
-                }
-            }
+            // TODO: Find out whether window.applicationCache code was important, and if so, port to non-deprecated API
+            //if (syncCount > 0 && window.applicationCache.status == window.applicationCache.IDLE) {
+            //    try {
+            //        window.applicationCache.update();
+            //    } catch (e) {
+            //    }
+            //}
             time("appcache");
 
             syncCount++;
