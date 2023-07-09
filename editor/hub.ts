@@ -1593,7 +1593,7 @@ module TDev.Browser {
         public init() {
             this.theRoot.style.display = "none";
             this.theRoot.id = "hubRoot";
-            elt("root").appendChild(this.eol); 
+            //elt("root").appendChild(this.eol); // we know it is end of life already
             elt("root")
                 .appendChild(this.theRoot);
             this.logo.withClick(() => {
