@@ -24,7 +24,13 @@ module TDev {
     if (!externalEditorsCache) {
       // Detect at run-time where we're running from!
       var url = Ticker.mainJsName.replace(/main.js$/, "");
-      var match = url.match(/(https?:\/\/[^\/]+)(.*)/);
+      var match = url.match(/(\w*:\/\/[^\/]*)(\/.*)/);
+
+      if (!match) {
+        console.error("Failed to parse URL to find external editors");
+        return [];
+      }
+
       var origin = match[1];
       var path = match[2];
 
