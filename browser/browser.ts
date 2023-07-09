@@ -616,6 +616,11 @@ module TDev {
 
         export function check(isIndex:boolean, what: string = undefined, path: string = undefined)
         {
+            // Skip telemetry and unsupported browser checks
+            detect();
+            (<any>window).browserSupported = true;
+            return
+
             if ((<any>window).isNodeJS) {
                 detect()
                 return
