@@ -779,6 +779,8 @@ module TDev {
 
         export function mkBugReport(err:any, ctx = "")
         {
+            console.log(err); // the browser console maps .js to .ts files (see README for generating .map)
+
             var r:BugReport = {
                 exceptionConstructor: "(unknown)",
                 exceptionMessage: "(unknown)",

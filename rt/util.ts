@@ -2828,7 +2828,7 @@ module TDev{
 
         try {
             if (fatal || dbg) {
-                var msgText = Util.formatText(dbg ? bug.exceptionMessage : "Something went wrong; please reload the webpage.");
+                var msgText = Util.formatText(bug.exceptionMessage);
                 var dmsg = div("errorNotification");
                 Browser.setInnerHTML(dmsg, msgText);
                 elt("root").appendChild(dmsg);
