@@ -592,8 +592,9 @@ module TDev.Cloud {
     }
 
     export var transientOfflineMode = false;
+    export var permanentOfflineMode = true; // servers have been shut down
     export function isTouchDevelopOnline() : boolean {
-        return !window.localStorage.getItem('offline_mode') && !transientOfflineMode;
+        return !window.localStorage.getItem('offline_mode') && !transientOfflineMode && !permanentOfflineMode;
     }
     export function setTouchDevelopOnline(value: boolean) {
         if (value)
