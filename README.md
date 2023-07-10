@@ -1,29 +1,36 @@
-![](https://az31353.vo.msecnd.net/c04/gttu.png)
+# Touch Develop - Static Fork
 
-Touch Develop is a touch-friendly, cross-platform, mobile-first app creation environment developed by Microsoft Research. 
-[![Build Status](https://travis-ci.org/Microsoft/TouchDevelop.svg)](https://travis-ci.org/Microsoft/TouchDevelop)
+> Touch Develop is a touch-friendly, cross-platform, mobile-first app creation
+> environment developed by Microsoft Research. 
 
-[![Dependency Status](https://david-dm.org/Microsoft/TouchDevelop.svg)](https://david-dm.org/Microsoft/TouchDevelop)
-[![devDependency Status](https://david-dm.org/Microsoft/TouchDevelop/dev-status.svg)](https://david-dm.org/Microsoft/TouchDevelop#info=devDependencies)
+The servers have been shut down, so the original TouchDevelop is no longer
+accessible. This fork has some small fixes such that you can still use it, just
+without cloud publishing.
+
+I believe that the unusual editor is
+still interesting to play with, since not many similar mobile focused
+development environments exist.
+
+Since most of the libraries were distributed using the cloud service, some
+libraries will fail to load. Luckily, I could recover some of them from old
+cache files (script.cache, help.cache), so the most of the templates should
+work. The cache files also contain tutorials, demos and help files, but they are
+not accessible from the UI at the moment.
 
 ## Writing and saving Touch Develop scripts
 
-**This repo contains the source code of the Touch Develop editor.** If you are
-intending to write Touch Develop scripts, you want to go to the web app at
-`touchdevelop.com`:
-* **stable:** https://www.touchdevelop.com/app/
-* **beta:** https://www.touchdevelop.com/app/beta
-* **latest:** https://www.touchdevelop.com/app/latest
+**This repo contains the source code of the Touch Develop editor.**
 
+Your projects are saved in local browser storage.
 You can save a Touch Develop script from the web app by clicking the `Save` button on
 the script's home page. This will create a JSON file that you can save. You can later
 drag-and-drop that file into the web app (running locally or via the web site) to load
 the script again.
 
 Other pages of interest:
-* landing page: [https://www.touchdevelop.com](https://www.touchdevelop.com)
-* blog: [https://www.touchdevelop.com/blog](https://www.touchdevelop.com/blog)
-* Hour Of Code tutorials: [https://www.touchdevelop.com/hoc](https://www.touchdevelop.com/hoc)
+* Archived landing page: <https://web.archive.org/web/20171201223140/https://www.touchdevelop.com/>
+* Archived blog: <https://web.archive.org/web/20180627160233/https://www.touchdevelop.com/blog>
+* Archived Hour Of Code tutorials: <https://web.archive.org/web/20170328092346/https://www.touchdevelop.com/hoc>
 
 ## What's in this repo?
 
@@ -44,17 +51,6 @@ if you're interested) and was later converted to TypeScript.
 It is currently used for the [BBC micro:bit](https://www.microbit.co.uk)
 as well as https://www.touchdevelop.com.
 
-## Contributing
-
-There are many ways to [contribute](https://github.com/Microsoft/TouchDevelop/blob/master/CONTRIBUTING.md) to Touch Develop.
-
-* [submit bugs](https://github.com/Microsoft/TouchDevelop/issues) and help us verify fixes as they are checked in.
-* review the [source code changes](https://github.com/Microsoft/TouchDevelop/pulls)
-* [contribute bug fixes or features](https://github.com/Microsoft/TouchDevelop/blob/master/CONTRIBUTING.md).
-
-If you're not a developer but still would like to help, we've got more tasks for you!
-
-* [help translate the user interface](https://touchdeveloptranslator.azurewebsites.net): do you use Touch Develop and speak a foreign language? You can help!
 
 ## Setup
 
@@ -101,6 +97,12 @@ export TD_SOURCE_MAPS=1 # optional, will slow down your build
 
 ````
 jake local
+````
+
+* build and copy static files to build/static:
+
+````
+jake static
 ````
 
 * run the test suite
@@ -189,7 +191,7 @@ The `client.js` is built by default.
 
 ### Structure of the generated website / app
 
-When packaged, as the website or as an app, the directory structure is flat.
+When packaged with `jake static`, the directory structure is flat.
 That is, the CSS and HTML files from `www/` as well as the generated `.js` files
 from `build/` all end up in the same directory. That way, `index.html` can refer
 to `main.js` without worrying.
