@@ -558,6 +558,20 @@ task('cordova', [ 'default' ], {}, function () {
    'www/editor.css'].forEach(function (f) { jake.cpR(f, 'build/cordova/'); });
 });
 
+desc('build and copy files to build/static for static deployment')
+task('static', [ 'default' ], {}, function () {
+  // FIXME minify
+  jake.mkdirP('build/static/');
+  ['www/index.html',
+   'build/browser.js',
+   'build/main.js',
+   'build/tdlibraries.js',
+   'www/default.css',
+   'www/editor.css',
+   'www/favicon.ico',
+  ].forEach(function (f) { jake.cpR(f, 'build/static/'); });
+});
+
 task('update-libs', ["build/client.js"], { async:true}, function () {
   runAndComplete(['node build/client fetchlibraries'], this);
 })
