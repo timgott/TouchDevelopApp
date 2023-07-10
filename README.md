@@ -1,4 +1,6 @@
-# Touch Develop - Static Fork
+Working fork of Touch Develop. Hosted at https://timgott.github.io/TouchDevelopApp/
+
+# Touch Develop - Offline Fork
 
 > Touch Develop is a touch-friendly, cross-platform, mobile-first app creation
 > environment developed by Microsoft Research. 
