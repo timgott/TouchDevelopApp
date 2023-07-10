@@ -569,6 +569,7 @@ task('static', [ 'default' ], {}, function () {
    'www/default.css',
    'www/editor.css',
    'www/favicon.ico',
+   'www/manifest.json',
   ].forEach(function (f) { jake.cpR(f, 'build/static/'); });
 });
 
